@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let card of carts; let i = index">
+      <mat-card class="my-3">
+        <mat-card-header>
+          <mat-card-title>{{ card.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="card.images[currentImageIndices[i]]" alt="Anime photo">
+        <div *ngIf="card.images.length > 1" class="container">
+          <div class="row">
+            <div class="col-12">
+              <button type="button" class="btn btn-primary btn-sm mt-3 mb-3" style="margin-right: 0.75rem;" (click)="changeImage(i, 'prev')">Prev</button>
+              <button type="button" class="btn btn-primary btn-sm mt-3 mb-3" (click)="changeImage(i, 'next')">Next</button>
+            </div>
+          </div>
+        </div>
+            
+        <mat-card-content>
+          <p *ngFor="let technique of card.jutsu.slice(0,2)">{{ technique }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
